@@ -1,6 +1,14 @@
 import { useState, useEffect } from 'react';
 import BlogList from './BlogList';
 
+// npx json-server --watch data/db.json --port 8000
+/* Endpoints for fake data in JSON
+    /blogs      |   GET   | Fetch all blogs
+    /blogs/{id} |   GET   | Fetch single blog
+    /blogs      |   POST  | Add a new blog
+    /blogs/{id} | DELETE  | Delete a blog
+*/
+
 const Home = () => {
   const [blogs, setBlogs] = useState([
     { title: 'New site', body: 'lorem ipsum...', author: 'mario', id: 1},
