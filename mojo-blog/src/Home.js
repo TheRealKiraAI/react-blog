@@ -6,7 +6,8 @@ const Home = () => {
     { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 1},
     { title: 'Mario kart', body: 'lorem ipsum...', author: 'toad', id: 1}
   ]);
-  
+
+  // convert to reusable component
   return ( 
     <div className="home">
       {blogs.map((blog) => (
