@@ -8,11 +8,15 @@ const Home = () => {
     { title: 'Mario kart', body: 'lorem ipsum...', author: 'mario', id: 3}
   ]);
 
-  // use props: (1) reusable component, (2) can be used in Home if needed, (3) practice with props
+  const handleDelete = (id) => {
+    // false if id doesn't match array and stays in array else true if there is a match to delete item in array
+    const newBlogs = blogs.filter(blog => blog.id !== id);
+    setBlogs(newBlogs);
+  }
+
   return ( 
     <div className="home">
-      <BlogList blogs={blogs} title="All Blogs"/>
-      <BlogList blogs={blogs.filter((blog) => blog.author === 'mario')} title="Mario's Blogs"/>
+      <BlogList blogs={blogs} title="All Blogs" handleDelete={handleDelete}/>
     </div>
    );
 }
