@@ -1,21 +1,17 @@
 import { useState } from 'react';
+import BlogList from './BlogList';
 
 const Home = () => {
   const [blogs, setBlogs] = useState([
     { title: 'New site', body: 'lorem ipsum...', author: 'mario', id: 1},
-    { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 1},
-    { title: 'Mario kart', body: 'lorem ipsum...', author: 'toad', id: 1}
+    { title: 'Welcome party!', body: 'lorem ipsum...', author: 'yoshi', id: 2},
+    { title: 'Mario kart', body: 'lorem ipsum...', author: 'toad', id: 3}
   ]);
 
-  // convert to reusable component
+  // use props: (1) reusable component, (2) can be used in Home if needed, (3) practice with props
   return ( 
     <div className="home">
-      {blogs.map((blog) => (
-        <div className="blog-preview" key={blog.id}>
-          <h2>{ blog.title }</h2>
-          <p>Written by: { blog.author }</p>
-        </div>
-      ))}
+      <BlogList blogs={blogs} title="All Blogs"/>
     </div>
    );
 }
