@@ -5,28 +5,29 @@ const useFetch = (url) => {
   const [isPending, setIsPending] = useState(true);
   const [error, setError] = useState(null);
 
-   // useEffect re-renders code whenever name state changes
-   useEffect(() => {
-    fetch(url)
-    .then(res => {
-      if (!res.ok) {
-        throw Error('cannot fetch');
-      }
-      return res.json()
-    })
-    .then(data => {
-      console.log(data)
-      setData(data)
-      setIsPending(false);
-      setError(null);
-    })
-    .catch(err => {
-      setIsPending(false);
-      setError(err.message);
-    })
-  }, []);
+  useEffect(() => {
+    setTimeout(() => {
+      fetch(url)
+      .then(res => {
+        if (!res.ok) { // error coming back from server
+          throw Error('could not fetch the data for that resource');
+        } 
+        return res.json();
+      })
+      .then(data => {
+        setIsPending(false);
+        setData(data);
+        setError(null);
+      })
+      .catch(err => {
+        // auto catches network / connection error
+        setIsPending(false);
+        setError(err.message);
+      })
+    }, 1000);
+  }, [url])
 
-  return { data, isPending, error }
+  return { data, isPending, error };
 }
-
+ 
 export default useFetch;
